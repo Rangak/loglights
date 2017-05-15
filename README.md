@@ -1,5 +1,9 @@
 # loglights
 
+
+Extract Hyperledger Fabric Logfile Highlights
+
+
 usage: loglights.py [-h] [-d DEPTH] [-p PRECISION] logfile
 
 
