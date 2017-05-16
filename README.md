@@ -4,7 +4,8 @@
 Extract Hyperledger Fabric Logfile Highlights
 
 
-usage: loglights.py [-h] [-d DEPTH] [-p PRECISION] logfile
+usage: loglights.py [-h] [-d DEPTH] [-n NUM] [-s | --no-sort] [-p PACKAGES] logfile
+
 
 
 Example:
