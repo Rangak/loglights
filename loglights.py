@@ -27,7 +27,8 @@ logfile = open(args.logfile, 'r')
 
 num_lines=0
 num_events=0
-prev =[0,0]
+prev = 0
+depthcount = 0
 
 output = []
 
@@ -45,15 +46,19 @@ for line in logfile:
         tsend = 20 + args.num
         ts = line[11:tsend]
         num_lines += 1
-        if prev == [ts, package]:
+        if prev == ts and depthcount == 0:
             continue
         else:
-            if ts != prev[0]:
-                if text[-1:] == '\n':
-                    text = text[0:-1]
-                output.append([ts, package, text])
+            if text[-1:] == '\n':
+                text = text[0:-1]
+            output.append([ts, package, text])
+            if depthcount == 0:
+                depthcount = args.depth - 1
                 num_events += 1               
-            prev = [ts,package]        
+                prev = ts                
+            else:
+                depthcount -= 1
+      
 
 if args.sort:
     output.sort(key=lambda x: x[1])
